@@ -1,22 +1,22 @@
 package org.esfm.institutomongo.controller;
 
 import org.esfm.institutomongo.Group;
+import org.esfm.institutomongo.Student;
+import org.esfm.institutomongo.exceptions.GroupNotFoundException;
 import org.esfm.institutomongo.repository.GroupRepository;
 import org.esfm.institutomongo.services.GroupService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 @RestController
 public class GroupController {
-    //Listar grupos
+    //Listar grupos - HECHO
     //
-    //- Listar alumnos de un grupo /groups/{groupId}/students
+    //- Listar alumnos de un grupo /groups/{groupId}/students hecho
     //
     //- Listar las faltas de un alumno
     //
@@ -41,5 +41,12 @@ public class GroupController {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "Ya existe este grupo");
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/groups/{group_id}/students")
+    public List<Student> findByGroupId(
+            @PathVariable ( "group_id") int groupId
+    ) throws GroupNotFoundException {
+        return groupService.findByGroupId(groupId);
     }
 }

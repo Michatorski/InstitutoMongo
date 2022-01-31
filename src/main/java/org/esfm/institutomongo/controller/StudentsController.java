@@ -25,4 +25,12 @@ public class StudentsController {
     public void insert(){
         
     }
+
+    public void delete(){
+
+    }
+
+    public void update(){
+
+    }
 }
