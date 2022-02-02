@@ -48,6 +48,12 @@ public class GroupController {
     }
 
 
+private List<GroupApi> convert(List<Group> groups){
+        return null;
+}
 
+private List<Group> convertToModel(List<GroupApi> groups){
+        return null;
+}
 
 }
