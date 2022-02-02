@@ -1,7 +1,9 @@
 package org.esfm.institutomongo.services;
 
+import org.esfm.institutomongo.Absence;
 import org.esfm.institutomongo.Student;
 import org.esfm.institutomongo.exceptions.GroupNotFoundException;
+import org.esfm.institutomongo.exceptions.StudentNotFoundException;
 import org.esfm.institutomongo.repository.GroupRepository;
 import org.esfm.institutomongo.repository.StudentsRepository;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,31 @@ public class StudentService {
         this.groupRepository = groupRepository;
     }
 
-    public List<Student> findStudents(){
+    public List<Student> findStudents() {
         return studentsRepository.findAll();
     }
 
+    public List<Absence> findAbsence(String nif) throws StudentNotFoundException {
+        if (!studentsRepository.existsById(nif)) {
+            throw new StudentNotFoundException(nif);
+        }
+        return studentsRepository.findAllAbsences(nif);
+    }
+
+    public boolean deleteByNif(String nif) {
+        if (studentsRepository.existsById(nif)) {
+            return false;
+        }
+        studentsRepository.deleteById(nif);
+        return true;
+    }
+
+    public boolean update(Student student){
+        if (!studentsRepository.existsById(student.getNif())){
+            return false;
+        }
+        studentsRepository.save(student);
+        return true;
+    }
 
 }

@@ -13,14 +13,14 @@ public class Student {
     private String name;
     private String surname;
     private int idGroup;
-    private List<Fault>faults;
+    private List<Absence> absences;
 
-    public Student(String nif, String name, String surname, int idGroup, List<Fault> faults) {
+    public Student(String nif, String name, String surname, int idGroup, List<Absence> absences) {
         this.nif = nif;
         this.name = name;
         this.surname = surname;
         this.idGroup = idGroup;
-        this.faults = faults;
+        this.absences = absences;
     }
 
     public String getNif() {
@@ -55,12 +55,12 @@ public class Student {
         this.idGroup = idGroup;
     }
 
-    public List<Fault> getFaults() {
-        return faults;
+    public List<Absence> getFaults() {
+        return absences;
     }
 
-    public void setFaults(List<Fault> faults) {
-        this.faults = faults;
+    public void setFaults(List<Absence> absences) {
+        this.absences = absences;
     }
 
     @Override
@@ -68,12 +68,12 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return idGroup == student.idGroup && Objects.equals(nif, student.nif) && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(faults, student.faults);
+        return idGroup == student.idGroup && Objects.equals(nif, student.nif) && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(absences, student.absences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nif, name, surname, idGroup, faults);
+        return Objects.hash(nif, name, surname, idGroup, absences);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", idGroup=" + idGroup +
-                ", faults=" + faults +
+                ", absences=" + absences +
                 '}';
     }
 }

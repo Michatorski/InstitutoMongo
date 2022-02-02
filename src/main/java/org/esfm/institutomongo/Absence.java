@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class Fault {
+public class Absence {
     @JsonFormat(pattern = "yyyy/MM/dd")
     private Date date;
     private String module;
 
-    public Fault(Date date, String module) {
+    public Absence(Date date, String module) {
         this.date = date;
         this.module = module;
     }
@@ -35,8 +35,8 @@ public class Fault {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Fault fault = (Fault) o;
-        return Objects.equals(date, fault.date) && Objects.equals(module, fault.module);
+        Absence absence = (Absence) o;
+        return Objects.equals(date, absence.date) && Objects.equals(module, absence.module);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Fault {
 
     @Override
     public String toString() {
-        return "Fault{" +
+        return "Absence{" +
                 "date=" + date +
                 ", module='" + module + '\'' +
                 '}';
