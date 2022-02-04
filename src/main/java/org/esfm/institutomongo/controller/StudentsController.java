@@ -18,6 +18,13 @@ public class StudentsController {
         this.studentService = studentService;
     }
 
+    //- Actualizar los datos de un alumno
+    public void modifyStudent(
+            @PathVariable("groupId") String groupId,
+            @PathVariable("nif") String nif
+    ){
+        return studentService.
+    }
 
     //Listar faltas de alumnos
     @RequestMapping(method = RequestMethod.GET, path = "/students/{nif}/absences")
@@ -40,13 +47,8 @@ public class StudentsController {
         studentService.deleteByNif(nif);
     }
 
-    //- Actualizar los datos de un alumno
-    @RequestMapping(method = RequestMethod.POST, path = "/students")
-    public void update(
-            @RequestBody Student student
-            ){
-        studentService.update(student);
-    }
+
+
 
     //- Dado un nif, una fecha y un módulo, añadir una falta a un alumno
     public void insterAbsecne(){

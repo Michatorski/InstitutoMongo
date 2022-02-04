@@ -30,7 +30,8 @@ public class StudentService {
         if (!studentsRepository.existsById(nif)) {
             throw new StudentNotFoundException(nif);
         }
-        return studentsRepository.findAllAbsences(nif);
+        return studentsRepository.findByNif(nif).getFaults();
+
     }
 
     public boolean deleteByNif(String nif) {

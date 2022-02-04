@@ -9,5 +9,7 @@ import java.util.List;
 
 @Component
 public interface StudentsRepository extends MongoRepository<Student, String > {
-    List<Absence> findAllAbsences(String nif);
+
+
+    Student findByNif(String nif);
 }
